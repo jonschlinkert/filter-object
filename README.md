@@ -1,6 +1,6 @@
 # filter-object [![NPM version](https://badge.fury.io/js/filter-object.svg)](http://badge.fury.io/js/filter-object)
 
-> Return an object filtered to have only the keys that match the given glob patterns.
+> Return a copy of an object, filtered to have only keys that match the given glob patterns.
 
 ## Install
 #### Install with [npm](npmjs.org):
@@ -20,17 +20,24 @@ npm test
 ```js
 var filter = require('filter-object');
 
-filter({a: 'a', b: 'b', c: 'c'}, '*')
+filter({a: 'a', b: 'b', c: 'c'}, '*');
 //=> {a: 'a', b: 'b', c: 'c'}
 
-filter({a: 'a', b: 'b', c: 'c'}, 'b')
+filter({a: 'a', b: 'b', c: 'c'}, 'b');
 //=> {b: 'b'}
 
-filter({foo: 'a', bar: 'b', baz: 'c'}, 'b*')
+filter({foo: 'a', bar: 'b', baz: 'c'}, 'b*');
 //=> {bar: 'b', baz: 'c'}
 
-filter({a: 'a', b: 'b', c: 'c'}, '{b,c}')
+filter({a: 'a', b: 'b', c: 'c'}, '{b,c}');
 //=> {b: 'b', c: 'c'}
+```
+
+Negation patterns work as well:
+
+```js
+filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*']);
+//=> {foo: 'a'}
 ```
 
 ## Contributing

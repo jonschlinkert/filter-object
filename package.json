@@ -1,7 +1,7 @@
 {
   "name": "filter-object",
-  "description": "Return an object filtered to have only the keys that match the given glob patterns.",
-  "version": "0.1.1",
+  "description": "Return a copy of an object, filtered to have only keys that match the given glob patterns.",
+  "version": "0.1.2",
   "homepage": "https://github.com/jonschlinkert/filter-object",
   "author": {
     "name": "Jon Schlinkert",
@@ -32,7 +32,32 @@
     "verb": ">= 0.2.6",
     "mocha": "*"
   },
-  "keywords": [],
+  "keywords": [
+    "arr",
+    "array",
+    "expand",
+    "filter",
+    "find",
+    "function",
+    "glob",
+    "globbing",
+    "globs",
+    "js",
+    "key",
+    "keys",
+    "match",
+    "matcher",
+    "minimatch",
+    "obj",
+    "object",
+    "order",
+    "pattern",
+    "patterns",
+    "sort",
+    "util",
+    "utility",
+    "wildcard"
+  ],
   "dependencies": {
     "filter-keys": "^0.1.1",
     "multimatch": "^1.0.0",

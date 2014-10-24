@@ -18,6 +18,11 @@ describe('filter', function () {
     filter({foo: 'a', bar: 'b', baz: 'c'}, 'b*').should.eql({bar: 'b', baz: 'c'});
   });
 
+  it('should exclude keys that match negation patterns:', function () {
+    filter({a: 'a', b: 'b', c: 'c'}, ['*', '!a']).should.eql({b: 'b', c: 'c'});
+    filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*']).should.eql({foo: 'a'});
+  });
+
   it('should filter keys using brace expansion', function () {
     filter({a: 'a', b: 'b', c: 'c'}, '{b,c}').should.eql({b: 'b', c: 'c'});
   });
