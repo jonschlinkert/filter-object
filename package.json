@@ -1,0 +1,41 @@
+{
+  "name": "filter-object",
+  "description": "Return an object filtered to have only the keys that match the given glob patterns.",
+  "version": "0.1.1",
+  "homepage": "https://github.com/jonschlinkert/filter-object",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/filter-object.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/filter-object/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/filter-object/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "verb-tag-jscomments": ">= 0.2.0",
+    "verb": ">= 0.2.6",
+    "mocha": "*"
+  },
+  "keywords": [],
+  "dependencies": {
+    "filter-keys": "^0.1.1",
+    "multimatch": "^1.0.0",
+    "sort-object": "^0.3.1"
+  }
+}
