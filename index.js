@@ -2,9 +2,9 @@
 
 var filterKeys = require('filter-keys');
 var sortObject = require('sort-object');
+var extend = require('extend-shallow');
 
-
-module.exports = function filterObject(o, patterns) {
+module.exports = function filterObject(o, patterns, options) {
   if (o == null) {
     throw new Error('filter-object expects an object');
   }
@@ -13,5 +13,6 @@ module.exports = function filterObject(o, patterns) {
     return o;
   }
 
-  return sortObject(o, filterKeys(o, patterns));
+  var keys = filterKeys(o, patterns);
+  return sortObject(o, extend({keys: keys}, options));
 };
