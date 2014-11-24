@@ -1,7 +1,7 @@
 {
   "name": "filter-object",
   "description": "Return a copy of an object, filtered to have only keys that match the given glob patterns.",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "homepage": "https://github.com/jonschlinkert/filter-object",
   "author": {
     "name": "Jon Schlinkert",
@@ -27,10 +27,14 @@
   "scripts": {
     "test": "mocha -R spec"
   },
+  "dependencies": {
+    "extend-shallow": "^0.1.1",
+    "filter-keys": "^0.1.1",
+    "sort-object": "^0.3.1"
+  },
   "devDependencies": {
-    "verb-tag-jscomments": ">= 0.2.0",
-    "verb": ">= 0.2.6",
-    "mocha": "*"
+    "mocha": "*",
+    "should": "^4.3.0"
   },
   "keywords": [
     "arr",
@@ -57,9 +61,5 @@
     "util",
     "utility",
     "wildcard"
-  ],
-  "dependencies": {
-    "filter-keys": "^0.1.1",
-    "sort-object": "^0.3.1"
-  }
+  ]
 }
