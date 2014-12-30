@@ -1,7 +1,7 @@
 {
   "name": "filter-object",
   "description": "Return a copy of an object, filtered to have only keys that match the given glob patterns.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/filter-object",
   "author": {
     "name": "Jon Schlinkert",
@@ -14,27 +14,24 @@
   "bugs": {
     "url": "https://github.com/jonschlinkert/filter-object/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/jonschlinkert/filter-object/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/jonschlinkert/filter-object/blob/master/LICENSE-MIT"
+  },
   "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "lint": "jshint **.js",
+    "docs": "update && license && verb && deps",
+    "all": "npm run test && npm run lint && npm run docs"
   },
   "dependencies": {
-    "extend-shallow": "^0.1.1",
-    "filter-keys": "^0.1.1",
-    "sort-object": "^0.3.1"
-  },
-  "devDependencies": {
-    "mocha": "*",
-    "should": "^4.3.0"
+    "extend-shallow": "^0.2.0",
+    "filter-keys": "^1.0.0",
+    "sort-object": "^0.3.2"
   },
   "keywords": [
     "arr",
@@ -58,8 +55,6 @@
     "pattern",
     "patterns",
     "sort",
-    "util",
-    "utility",
     "wildcard"
   ]
 }
