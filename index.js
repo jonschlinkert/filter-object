@@ -9,10 +9,8 @@ module.exports = function filterObject(o, patterns, options) {
     throw new Error('filter-object expects an object');
   }
 
-  if (arguments.length === 1) {
-    return o;
-  }
+  if (patterns == nul) return o;
 
-  var keys = filterKeys(o, patterns);
+  var keys = filterKeys(o, patterns, options);
   return sortObject(o, extend({keys: keys}, options));
 };
