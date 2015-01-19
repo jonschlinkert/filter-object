@@ -1,7 +1,7 @@
 {
   "name": "filter-object",
   "description": "Return a copy of an object, filtered to have only keys that match the given glob patterns.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/jonschlinkert/filter-object",
   "author": {
     "name": "Jon Schlinkert",
