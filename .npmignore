@@ -50,3 +50,7 @@ validation-report.json
 
 # misc
 TODO.md
+
+# npmignore
+.*
+test.js
