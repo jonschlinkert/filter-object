@@ -11,6 +11,13 @@ var assert = require('assert');
 var filter = require('./');
 
 describe('filter', function () {
+  it('should use a filter function:', function () {
+    var res = filter({a: 'a', b: 'b', c: 'c'}, function (val, key) {
+      return key === 'b';
+    });
+    assert.deepEqual(res, {b: 'b'});
+  });
+
   it('should filter keys using the given glob patterns', function () {
     assert.deepEqual(filter({a: 'a', b: 'b', c: 'c'}, '*'), {a: 'a', b: 'b', c: 'c'});
     assert.deepEqual(filter({a: 'a', b: 'b', c: 'c'}, 'b'), {b: 'b'});
