@@ -13,8 +13,8 @@ var filter = require('./');
 
 describe('filter', function () {
   it('should use a filter function:', function () {
-    var res = filter({a: 'a', b: 'b', c: 'c'}, function (val, key) {
-      return key === 'b';
+    var res = filter({a: 'a', b: 'b', c: 'c'}, function (val) {
+      return val === 'b';
     });
     assert.deepEqual(res, {b: 'b'});
   });
