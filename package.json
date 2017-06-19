@@ -20,14 +20,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "extend-shallow": "^2.0.1",
-    "filter-keys": "^1.0.2",
-    "filter-values": "^0.4.0",
-    "kind-of": "^2.0.1",
-    "object.pick": "^1.1.1"
+    "filter-values": "^0.4.1",
+    "glob-object": "^1.0.0",
+    "isobject": "^3.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.1"
+    "gulp-format-md": "^0.1.12",
+    "mocha": "^3.4.2"
   },
   "keywords": [
     "arr",
@@ -61,6 +60,21 @@
         "rename-keys",
         "sort-object"
       ]
-    }
+    },
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "filter-values",
+      "glob-object"
+    ]
   }
 }

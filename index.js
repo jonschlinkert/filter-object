@@ -1,22 +1,21 @@
 'use strict';
 
-var typeOf = require('kind-of');
-var filterKeys = require('filter-keys');
 var filterValues = require('filter-values');
-var pick = require('object.pick');
-var extend = require('extend-shallow');
+var isObject = require('isobject');
+var glob = require('glob-object');
 
-module.exports = function filterObject(val, patterns, options) {
-  if (!val || typeof val !== 'object') {
-    throw new Error('filter-object expects an object');
+module.exports = function(obj, patterns, options) {
+  if (!isObject(obj)) {
+    throw new TypeError('expected an object');
   }
 
-  if (patterns == null) return val;
-
-  if (typeOf(patterns) === 'function') {
-    return filterValues(val, patterns, options);
+  if (!patterns) {
+    return obj;
   }
 
-  var keys = filterKeys(val, patterns, options);
-  return pick(val, keys);
+  if (typeof patterns === 'function') {
+    return filterValues(obj, patterns, options);
+  }
+
+  return glob(patterns, obj, options);
 };

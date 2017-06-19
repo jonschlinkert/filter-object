@@ -1,10 +1,22 @@
+var filter = require('./');
+console.log(filter({a: 'aaa', b: {c: {d: 'ddd', e: 'eee'}}, f: 'fff'}, ['!b']));
+// I think this should return  { a: 'aaa', f: 'fff' }
 
-## Usage
+console.log(filter({a: 'aaa', b: {c: {d: 'ddd', e: 'eee'}}, f: 'fff'}, ['b']));
+// I think this should return  { b: { c: { d: 'ddd', e: 'eee' } } }
 
-### Filter with glob patterns
+var res = filter({
+  removeMe: 'now',
+  foo: {
+    bar: {
+      hello: 'hello',
+      there: 'there'
+    }
+  },
+  foosiz: 'to-remove'
+}, ['foo.*']);
+console.log(res)
 
-```js
-var filter = require('{%= name %}');
 
 console.log(filter({a: 'a', b: 'b', c: 'c'}, '*'));
 //=> {a: 'a', b: 'b', c: 'c'}
@@ -20,25 +32,12 @@ console.log(filter({a: 'a', b: 'b', c: 'c'}, '{b,c}'));
 
 console.log(filter({a: 'a', b: 'b', c: 'c'}, ['a', 'b']));
 //=> {a: 'a', b: 'b'}
-```
 
-**Negation patterns**
+console.log(filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*']));
+//=> { foo: 'a' }
 
-```js
 console.log(filter({foo: 'a', bar: 'b', baz: 'c'}, ['!b*']));
 //=> { foo: 'a' }
 
 console.log(filter({a: {b: {foo: 'a', bar: 'b', baz: 'c'}}}, ['!a.b.b*']));
 //=> {a: {b: {foo: 'a'}}}
-```
-
-### options
-
-Options are passed to [glob-object][] and/or [filter-values][]
-
-```js
-filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*'], options);
-```
-
-See [glob-object][] and/or [filter-values][] for the full range of options and available features.
-
