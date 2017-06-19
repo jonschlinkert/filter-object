@@ -1,13 +1,13 @@
-# filter-object [![NPM version](https://badge.fury.io/js/filter-object.svg)](http://badge.fury.io/js/filter-object)  [![Build Status](https://travis-ci.org/jonschlinkert/filter-object.svg)](https://travis-ci.org/jonschlinkert/filter-object)
+# filter-object [![NPM version](https://img.shields.io/npm/v/filter-object.svg?style=flat)](https://www.npmjs.com/package/filter-object) [![NPM monthly downloads](https://img.shields.io/npm/dm/filter-object.svg?style=flat)](https://npmjs.org/package/filter-object) [![NPM total downloads](https://img.shields.io/npm/dt/filter-object.svg?style=flat)](https://npmjs.org/package/filter-object) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/filter-object.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/filter-object)
 
 > Filter an object by its keys or values. Returns a copy of an object filtered to have only keys or values that match the given glob patterns.
 
 ## Install
 
-Install with [npm](https://www.npmjs.com/)
+Install with [npm](https://www.npmjs.com/):
 
 ```sh
-$ npm i filter-object --save
+$ npm install --save filter-object
 ```
 
 ## Usage
@@ -17,77 +17,86 @@ $ npm i filter-object --save
 ```js
 var filter = require('filter-object');
 
-filter({a: 'a', b: 'b', c: 'c'}, '*');
+console.log(filter({a: 'a', b: 'b', c: 'c'}, '*'));
 //=> {a: 'a', b: 'b', c: 'c'}
 
-filter({a: 'a', b: 'b', c: 'c'}, 'b');
+console.log(filter({a: 'a', b: 'b', c: 'c'}, 'b'));
 //=> {b: 'b'}
 
-filter({foo: 'a', bar: 'b', baz: 'c'}, 'b*');
+console.log(filter({foo: 'a', bar: 'b', baz: 'c'}, 'b*'));
 //=> {bar: 'b', baz: 'c'}
 
-filter({a: 'a', b: 'b', c: 'c'}, '{b,c}');
+console.log(filter({a: 'a', b: 'b', c: 'c'}, '{b,c}'));
 //=> {b: 'b', c: 'c'}
+
+console.log(filter({a: 'a', b: 'b', c: 'c'}, ['a', 'b']));
+//=> {a: 'a', b: 'b'}
 ```
 
-Negation patterns work as well:
+**Negation patterns**
 
 ```js
-filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*']);
-//=> {foo: 'a'}
+console.log(filter({foo: 'a', bar: 'b', baz: 'c'}, ['!b*']));
+//=> { foo: 'a' }
+
+console.log(filter({a: {b: {foo: 'a', bar: 'b', baz: 'c'}}}, ['!a.b.b*']));
+//=> {a: {b: {foo: 'a'}}}
 ```
 
 ### options
 
-Pass options to [sort-object](https://github.com/doowb/sort-object) and/or [filter-keys](https://github.com/jonschlinkert/filter-keys)
+Options are passed to [glob-object](https://github.com/jonschlinkert/glob-object) and/or [filter-values](https://github.com/jonschlinkert/filter-values)
 
 ```js
 filter({foo: 'a', bar: 'b', baz: 'c'}, ['*', '!b*'], options);
 ```
 
-See [sort-object](https://github.com/doowb/sort-object) for the full range of options and features.
+See [glob-object](https://github.com/jonschlinkert/glob-object) and/or [filter-values](https://github.com/jonschlinkert/filter-values) for the full range of options and available features.
 
-### Filter with a callback function
+## About
 
-```js
-filter({a: 'a', b: 'b', c: 'c'}, function(val) {
-  return val !== 'b';
-});
-//=> {a: 'a', c: 'c'}
-```
+### Related projects
 
-## Related
+* [filter-keys](https://www.npmjs.com/package/filter-keys): Filter the keys of an object using glob patterns. | [homepage](https://github.com/jonschlinkert/filter-keys "Filter the keys of an object using glob patterns.")
+* [filter-values](https://www.npmjs.com/package/filter-values): Filter an object values using glob patterns or with a `callback` function returns true.  | [homepage](https://github.com/jonschlinkert/filter-values "Filter an object values using glob patterns or with a `callback` function returns true. ")
+* [micromatch](https://www.npmjs.com/package/micromatch): Glob matching for javascript/node.js. A drop-in replacement and faster alternative to minimatch and multimatch. | [homepage](https://github.com/micromatch/micromatch "Glob matching for javascript/node.js. A drop-in replacement and faster alternative to minimatch and multimatch.")
+* [rename-keys](https://www.npmjs.com/package/rename-keys): Modify the names of the own enumerable properties (keys) of an object. | [homepage](https://github.com/jonschlinkert/rename-keys "Modify the names of the own enumerable properties (keys) of an object.")
+* [sort-object](https://www.npmjs.com/package/sort-object): Sort the keys in an object. | [homepage](https://github.com/doowb/sort-object "Sort the keys in an object.")
 
-* [filter-keys](https://www.npmjs.com/package/filter-keys): Filter the keys of an object using glob patterns. | [homepage](https://github.com/jonschlinkert/filter-keys)
-* [filter-values](https://www.npmjs.com/package/filter-values): Filter an object values using glob patterns or with a `callback` function returns true.  | [homepage](https://github.com/jonschlinkert/filter-values)
-* [micromatch](https://www.npmjs.com/package/micromatch): Glob matching for javascript/node.js. A drop-in replacement and faster alternative to minimatch and multimatch. Just… [more](https://www.npmjs.com/package/micromatch) | [homepage](https://github.com/jonschlinkert/micromatch)
-* [rename-keys](https://www.npmjs.com/package/rename-keys): Modify the names of the own enumerable properties (keys) of an object. | [homepage](https://github.com/jonschlinkert/rename-keys)
-* [sort-object](https://www.npmjs.com/package/sort-object): Sort the keys in an object. | [homepage](https://github.com/doowb/sort-object)
+### Contributing
 
-## Running tests
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
 
-Install dev dependencies:
+### Building docs
+
+_(This project's readme.md is generated by [verb](https://github.com/verbose/verb-generate-readme), please don't edit the readme directly. Any changes to the readme must be made in the [.verb.md](.verb.md) readme template.)_
+
+To generate the readme, run the following command:
 
 ```sh
-$ npm i -d && npm test
+$ npm install -g verbose/verb#dev verb-generate-readme && verb
 ```
 
-## Contributing
+### Running tests
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/jonschlinkert/filter-object/issues/new).
+Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests with the following command:
 
-## Author
+```sh
+$ npm install && npm test
+```
+
+### Author
 
 **Jon Schlinkert**
 
-+ [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
+* [github/jonschlinkert](https://github.com/jonschlinkert)
+* [twitter/jonschlinkert](https://twitter.com/jonschlinkert)
 
-## License
+### License
 
-Copyright © 2015 Jon Schlinkert
-Released under the MIT license.
+Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert).
+Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-cli](https://github.com/assemble/verb-cli) on September 08, 2015._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on June 19, 2017._
